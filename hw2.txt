@@ -1,0 +1,25 @@
+Создал таблицу для лайков пользователей:
+
+DROP TABLE IF EXISTS `user_likes`;
+CREATE TABLE `user_likes` (
+	user_likes_id BIGINT UNSIGNED NOT NULL UNIQUE,
+	user_receives_like_id BIGINT UNSIGNED NOT NULL UNIQUE,
+    created_at DATETIME DEFAULT NOW(),
+    
+	FOREIGN KEY (user_likes_id) REFERENCES users(id),
+	FOREIGN KEY (user_receives_like_id) REFERENCES users(id)
+);
+
+А также для лайков постов и медиафайлов:
+
+DROP TABLE IF EXISTS `photos_media_likes`;
+CREATE TABLE `photos_media_likes` (
+	user_id BIGINT UNSIGNED NOT NULL UNIQUE,
+	photo_id BIGINT UNSIGNED NOT NULL UNIQUE,
+	media_id BIGINT UNSIGNED NOT NULL UNIQUE,
+    created_at DATETIME DEFAULT NOW(),
+    
+	FOREIGN KEY (user_id) REFERENCES users(id),
+	FOREIGN KEY (photo_id) REFERENCES photos(id)
+	FOREIGN KEY (media_id) REFERENCES media(id)
+);

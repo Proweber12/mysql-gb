@@ -1,5 +1,13 @@
-Создал файл my.cnf(не .my.cnf так как работаю на Windows) наполнил его содержимым:
-[client]
-user=root
-password=******
-Переместил этот файл в директорию Windows, всё заработало, вход теперь по команде (mysql), а не (mysql -u root -p), mysqldump тоже работает.
+Добавил таблицу с детальной информацией профиля:
+
+DROP TABLE IF EXISTS `profiles_detail`;
+CREATE TABLE `profiles_detail` (
+	user_id BIGINT UNSIGNED NOT NULL UNIQUE,
+    	family_status enum('married', 'idle'),
+    	education varchar(50),
+	about_me text,
+    
+	FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+По структуре кода всё понятно, есть пару моментов по свойствам, которые пойму в ходе активной работы с MySQL.
