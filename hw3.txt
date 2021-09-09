@@ -1,0 +1,6 @@
+Создаём базу данных sample:
+CREATE DATABASE sample;
+exit
+Делаем дамп БД example:
+mysqldump example > example_dump.sql
+mysql sample < example_dump.sql
