@@ -1,13 +1,9 @@
-Добавил таблицу с детальной информацией профиля:
+Задание со звёздочкой данное на уроке:
+Я долго думал, как сделать так, чтоб перемешались все значения в таблице friend_requests, но кроме как в ручную прописать для каждой строки UPDATE ничего в голову не приходило, я решил что можно создать копию этой таблицы и потом в основную таблицу в столбце target_user_id перемешать значения с помощью свойства ORDER BY RAND() LIMIT 1 где RAND() отвечает за рандомность подбора значений, а LIMIT за количество переборок. Метод далеко не самый лучший так, как странный с одной стороны, потому что приходится дулировать таблицы и могут также рандомно совпасть значения(ноу меня с первой же попытки всё как надо получилось).
 
-DROP TABLE IF EXISTS `profiles_detail`;
-CREATE TABLE `profiles_detail` (
-	user_id BIGINT UNSIGNED NOT NULL UNIQUE,
-    	family_status enum('married', 'idle'),
-    	education varchar(50),
-	about_me text,
-    
-	FOREIGN KEY (user_id) REFERENCES users(id)
-);
+	mysqldump vk friend_requests > friend_requests_dump.sql
+	mysql friend_requests_2 < friend_requests_dump.sql
+	UPDATE friend_requests SET target_user_id = (SELECT target_user_id FROM friend_requests_2 ORDER BY RAND() LIMIT 1);
+	DROP DATABASE friend_requests_2;
 
-По структуре кода всё понятно, есть пару моментов по свойствам, которые пойму в ходе активной работы с MySQL.
+Такие же действия провёл над таблицами messages и user_likes, так как в первом случае пользователь отправлял сообщение сам себе, а во втором пользователь лайкал сам себя.
