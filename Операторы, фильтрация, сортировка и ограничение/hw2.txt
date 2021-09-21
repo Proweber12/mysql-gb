@@ -1,0 +1,41 @@
+Создал новую таблицу и в неё внёс дату типом VARCHAR(так как такой таблицы не было изначально) и дополнительные пустые поля DATETIME, заполнил таблицу, перенес время из VARCHAR в DATETIME с помощью функции STR_TO_DATE, удалил старые столбцы.
+
+DROP TABLE IF EXISTS `media_gb`;
+
+CREATE TABLE `media_gb` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `created_at` varchar(255),
+  `updated_at` varchar(255),
+  `created_at_datetime` datetime,
+  `updated_at_datetime` datetime,
+  
+   UNIQUE KEY `id` (`id`)
+  );
+
+ 
+
+INSERT INTO `media_gb` (`id`,`created_at`, `updated_at`) VALUES (`id`, '25.10.2017 8:10', '21.02.1980 01:37');
+INSERT INTO `media_gb` (`id`,`created_at`, `updated_at`) VALUES (`id`, '20.10.2017 8:10', '21.02.1980 01:37');
+INSERT INTO `media_gb` (`id`,`created_at`, `updated_at`) VALUES (`id`, '20.10.2017 8:10', '21.02.1980 01:37');
+INSERT INTO `media_gb` (`id`,`created_at`, `updated_at`) VALUES (`id`, '20.10.2017 8:10', '21.02.1980 01:37');
+INSERT INTO `media_gb` (`id`,`created_at`, `updated_at`) VALUES (`id`, '27.10.2017 8:10', '21.02.1980 01:37');
+INSERT INTO `media_gb` (`id`,`created_at`, `updated_at`) VALUES (`id`, '20.05.2017 8:10', '21.02.1980 01:37');
+INSERT INTO `media_gb` (`id`,`created_at`, `updated_at`) VALUES (`id`, '20.10.2017 8:10', '21.02.1980 01:37');
+INSERT INTO `media_gb` (`id`,`created_at`, `updated_at`) VALUES (`id`, '20.10.2021 8:10', '21.02.1980 01:37');
+INSERT INTO `media_gb` (`id`,`created_at`, `updated_at`) VALUES (`id`, '20.10.2017 8:10', '21.02.1980 01:37');
+INSERT INTO `media_gb` (`id`,`created_at`, `updated_at`) VALUES (`id`, '20.10.2017 8:10', '21.06.1980 01:37');
+INSERT INTO `media_gb` (`id`,`created_at`, `updated_at`) VALUES (`id`, '20.10.2017 8:10', '23.02.1980 01:37');
+INSERT INTO `media_gb` (`id`,`created_at`, `updated_at`) VALUES (`id`, '20.10.2017 8:10', '21.02.1980 01:37');
+INSERT INTO `media_gb` (`id`,`created_at`, `updated_at`) VALUES (`id`, '20.10.2017 8:10', '21.02.1980 01:37');
+INSERT INTO `media_gb` (`id`,`created_at`, `updated_at`) VALUES (`id`, '20.10.2017 8:10', '17.12.1980 01:37');
+INSERT INTO `media_gb` (`id`,`created_at`, `updated_at`) VALUES (`id`, '20.10.2017 8:10', '21.02.1980 01:37');
+INSERT INTO `media_gb` (`id`,`created_at`, `updated_at`) VALUES (`id`, '20.10.2017 8:10', '21.01.1980 01:37');
+INSERT INTO `media_gb` (`id`,`created_at`, `updated_at`) VALUES (`id`, '20.10.2017 8:10', '11.02.1980 01:37');
+INSERT INTO `media_gb` (`id`,`created_at`, `updated_at`) VALUES (`id`, '20.10.2017 8:10', '21.02.1980 01:37');
+INSERT INTO `media_gb` (`id`,`created_at`, `updated_at`) VALUES (`id`, '20.10.2017 8:10', '21.02.1980 01:37');
+ 
+UPDATE media_gb
+SET created_at_datetime = STR_TO_DATE(created_at, '%d.%m.%Y %h:%i'),
+    updated_at_datetime = STR_TO_DATE(updated_at, '%d.%m.%Y %h:%i');
+ALTER TABLE media_gb
+    DROP created_at, DROP updated_at;

@@ -1,0 +1,21 @@
+Создал новую таблицу users_gb, и заполнил её, извлёк пользователей радившихся в мае и августе.
+
+DROP TABLE IF EXISTS `users_gb`;
+
+CREATE TABLE `users_gb` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `firstname` varchar(255) not null,
+  `birthmonth` varchar(255) not null,
+  
+   UNIQUE KEY `id` (`id`)
+  );
+
+ 
+
+INSERT INTO `users_gb` (`id`,`firstname`, `birthmonth`) VALUES (`id`, 'Mike', 'may');
+INSERT INTO `users_gb` (`id`,`firstname`, `birthmonth`) VALUES (`id`, 'Robert', 'december');
+INSERT INTO `users_gb` (`id`,`firstname`, `birthmonth`) VALUES (`id`, 'Liloo', 'august');
+INSERT INTO `users_gb` (`id`,`firstname`, `birthmonth`) VALUES (`id`, 'Max', 'may');
+INSERT INTO `users_gb` (`id`,`firstname`, `birthmonth`) VALUES (`id`, 'Kate', 'july');
+
+select * from users_gb where birthmonth='may' or birthmonth='august';
