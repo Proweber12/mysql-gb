@@ -1,0 +1,3 @@
+Выводим количство лайков и айди пользователей, где пользователи являются 10-ю самыми молодыми.
+
+select count(*), user_id from likes where user_id in (select * from (select user_id from profiles order by birthday desc limit 10) as age) group by user_id;

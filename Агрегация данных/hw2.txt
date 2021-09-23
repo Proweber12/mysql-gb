@@ -1,3 +1,0 @@
-Вычисляем день недели на основе текущего годамесяца рождения и дня рождения, с помощью функции CONCAT(), объединяем выражения и указателем where выбираем день недели(1-понедельник и т.д.).
-
-SELECT COUNT(*) as stats from (SELECT DAYOFWEEK(CONCAT(YEAR(NOW()),'-',MONTH(birthday),'-',DAYOFMONTH(birthday))) as date from profiles) as stats where date=1;
