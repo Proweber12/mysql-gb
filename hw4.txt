@@ -1,9 +1,0 @@
-Считаем лайки мужчин и женщин, объединяем это всё с помощью union и с помощью сортировки определяем у какого пола число лайков больше, выводим гендерный указатель этого пола.
-
-select gender from (
-	select 'm' as gender, count(*) as total_likes from likes where user_id in (select user_id from profiles where gender = 'm')
-	union
-	select 'f' as gender, count(*) as total_likes from likes where user_id in (select user_id from profiles where gender = 'f')
-) as male_or_female
-ORDER BY total_likes DESC
-LIMIT 1;

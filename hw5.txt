@@ -1,3 +1,0 @@
-Я решил определить активность человека по написанным сообщениям, так как это то, что делают чаще всего в соцсети VK(на мой взгляд).
-
-select count(*) as quantity, from_user_id from messages group by from_user_id order by quantity desc limit 10; 
