@@ -1,0 +1,5 @@
+Таблицы создавать не пришлось, они уже были.
+
+Для замены идентификаторов категорий использовал такую команду.
+
+SELECT products.id, products.product_name, products.price, categories.name AS category FROM products LEFT JOIN categories ON products.category_id = categories.id;

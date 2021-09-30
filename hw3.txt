@@ -1,0 +1,30 @@
+Создал таблицы и наполнил их данными. И с помощью корелированных запросов сменил английские названия городов на русские.
+
+drop table if exists flights;
+create table flights (
+  id serial primary key,
+  `from` VARCHAR(255),
+  `to` VARCHAR(255)
+);
+  
+drop table if exists cities;
+create table if not exists cities (
+  label VARCHAR(255),
+  name VARCHAR(255)
+);
+
+insert into flights (`from`,`to`) values
+('moscow', 'omsk'),
+('novgorod', 'kazan'),
+('irkutsk', 'moscow'),
+('omsk', 'irkutsk'),
+('moscow', 'kazan');
+
+insert into cities (label, name) values
+('moscow', 'Москва'),
+('irkutsk', 'Иркутск'),
+('novgorod', 'Новгород'),
+('kazan', 'Казань'),
+('omsk', 'Омск');
+
+SELECT id, (SELECT name FROM cities WHERE label = flights.from), (SELECT name FROM cities WHERE label = flights.to) FROM flights;
