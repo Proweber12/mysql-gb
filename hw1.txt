@@ -1,0 +1,8 @@
+Это задание было в уроке номер 6, доработал его так, чтоб выводился не id пользователя а его имя и фамилия, чтобы использовать JOIN-ы.
+
+select m.from_user_id, u.firstname, u.lastname, COUNT(*) as send 
+FROM messages as m
+join users as u on m.from_user_id = u.id
+WHERE to_user_id=101
+GROUP BY from_user_id
+ORDER BY send DESC;
