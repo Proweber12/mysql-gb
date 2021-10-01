@@ -1,3 +1,8 @@
-Это задание, как раз подходит под моё курсовое, поэтому таблицу с заказами создавать не пришлось, она уже была.
-Пишем поля которые надо вывести, а в WHERE проверяем айдишники пользователей, которые сделали заказ, используя свойство DISTINCT для отсеивания повторных идентификаторов, в случае если человек заказывал не раз.
-SELECT id, firstname, lastname FROM personal_data WHERE user_id IN (SELECT DISTINCT user_id FROM making_orders);
+Это задание было в уроке номер 6, доработал его так, чтоб выводился не id пользователя а его имя и фамилия, чтобы использовать JOIN-ы.
+
+select m.from_user_id, u.firstname, u.lastname, COUNT(*) as send 
+FROM messages as m
+join users as u on m.from_user_id = u.id
+WHERE to_user_id=101
+GROUP BY from_user_id
+ORDER BY send DESC;

@@ -1,5 +1,6 @@
-Таблицы создавать не пришлось, они уже были.
+Задание немного изменилось, так как в уроке номер 6 надо было получить количество лайков 10-ти самых молодых, а тут младше 10-лет.
 
-Для замены идентификаторов категорий использовал такую команду.
-
-SELECT products.id, products.product_name, products.price, categories.name AS category FROM products LEFT JOIN categories ON products.category_id = categories.id;
+select count(*)
+from profiles p 
+join likes l on p.user_id = l.user_id 
+where TIMESTAMPDIFF(year, p.birthday, now()) < 10;
