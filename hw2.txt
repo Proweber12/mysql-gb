@@ -1,6 +1,0 @@
-Задание немного изменилось, так как в уроке номер 6 надо было получить количество лайков 10-ти самых молодых, а тут младше 10-лет.
-
-select count(*)
-from profiles p 
-join likes l on p.user_id = l.user_id 
-where TIMESTAMPDIFF(year, p.birthday, now()) < 10;
