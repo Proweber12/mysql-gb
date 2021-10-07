@@ -1,17 +1,22 @@
-delimiter //
+DROP FUNCTION IF EXISTS hello;
+DELIMITER //
+CREATE FUNCTION hello()
+    RETURNS VARCHAR(255) DETERMINISTIC
+BEGIN
+    DECLARE time INT DEFAULT HOUR(NOW());
+    IF (time > 5 AND time < 12) THEN
+        RETURN 'Доброе утро!';
+    ELSEIF (time > 11 AND time < 18) THEN
+        RETURN 'Добрый день!';
+    ELSEIF (time > 17 AND time < 24) THEN
+        RETURN 'Добрый вечер!';
+    ELSE
+        RETURN 'Доброй ночи!';
 
-drop function if exists hello//
-create function hello() returns TEXT deterministic
-begin
-	set @times = @times;
-	case
-	when @times >= "6:00" and @times < "12:00" then return "Доброе утро";
-	when @times >= "12:00" and @times < "18:00" then return "Добрый день";
-	when @times >= "18:00" and @times < "00:00" then return "Добрый вечер";
-	when @times >= "00:00" and @times < "6:00" then return "Доброй ночи";
-	end case;
-end//
+    END IF;
+END //
 
-delimiter ;
+DELIMITER ;
 
-call hello(); 
+SELECT hello();
+
