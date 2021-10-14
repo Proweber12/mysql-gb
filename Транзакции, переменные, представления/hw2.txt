@@ -1,9 +1,0 @@
-Выполнил задание через JOIN-ы, вместо таблицы catalogs использовал categories, так как она у меня существовала уже и архитектура у неё была подходящая.
-
-CREATE VIEW product_category AS
-select p.name as product_name, c.name as category
-from 
-products p
-join
-categories c
-on p.category_id = c.id;
