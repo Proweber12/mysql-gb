@@ -1,0 +1,7 @@
+Решил самым бональным, но не самым правильным способом(из-за дублирования), через обычный словарь(ключ значение).
+
+SET Marina marina@gmail.com
+SET marina@gmail.com Marina
+
+GET marina@gmail.com
+GET Marina

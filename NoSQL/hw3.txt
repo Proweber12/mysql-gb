@@ -1,0 +1,5 @@
+db.shop.insert({category: 'Laptop'})
+db.shop.insert({category: 'Smartphone'})
+
+db.shop.update({category: 'Laptop'}, {$set: {products: ['ASUS VivoBook 17', 'Lenovo IdeaPad L340-17IRH Gaming', 'HP 15-dw1056ur', 'ASUS Laptop 15 M515DA-BQ1041']}})
+db.shop.update({category: 'Smartphone'}, {$set: {products: ['Apple iPhone 12 Pro', 'Apple iPhone XS Max', 'Apple iPhone X', 'Apple iPhone 11']}})
